@@ -1,0 +1,83 @@
+# Instale el dnf-plugins-corepaquete (que proporciona los comandos para administrar sus repositorios DNF) y configure el repositorio.
+
+sudo dnf -y install dnf-plugins-core
+sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+
+.............................................
+
+# luego hacemos un makecache para actualizar los repositorios.
+
+sudo dnf makecache
+
+
+#Para instalar la última versión, ejecute:
+
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+.............................................
+
+# luego ponemos para ver la versión de docker.
+
+docker version
+
+.............................................
+
+# ahora verificamos el status de docker
+
+systemctl start docker
+systemctl enable docker
+systemctl status docker
+
+.............................................
+
+# para mirar si tenemos alguna imagen en docker.
+docker ps -a
+
+.............................................
+
+docker pull nginx
+
+
+
+docker images 
+
+.............................................
+# para crear una imagen
+
+docker run -d -p 8888:80 nginx
+
+
+
+................................................
+
+
+sudo mkdir /home/website
+cd /home/website
+sudo nano index.html
+
+<html>
+<body>
+<h1>M1 NOMBRE: Elvis Xaviel Ramirez Feliz</h1>
+<h3>M1 MATRICULA: 20221881</h3>
+</body>
+</html>
+
+...............................................
+
+# para crear el contenedor en el puerto
+
+sudo docker run -d -p 8888:80 -v /home/website:/usr/share/nginx/html --name cocacola nginx 
+
+
+
+.............................................
+
+# para eliminal y remover un docker usamos el comando.
+
+docker kill [(los primeros tres números del ID)]
+docker kill [(los primeros tres números del ID)]
+
+
+
+127.0.0.1:8888
+
